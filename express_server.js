@@ -7,6 +7,7 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 
+
 // EJS setup view engine
 app.set("view engine", "ejs");
 
@@ -15,6 +16,15 @@ app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase };
   res.render("urls_index", templateVars);
 });
+
+
+
+app.get("/urls/:id", (req, res) => {
+  const paramsId = req.params.id;
+  const templateVars = { id: req.params.id, longURL: urlDatabase[paramsId] };
+  res.render("urls_show", templateVars);
+});
+
 
 
 // Paths
