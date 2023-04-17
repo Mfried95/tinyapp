@@ -7,6 +7,10 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 
+// EJS setup view engine
+app.set("view engine", "ejs");
+
+// Paths
 app.get("/", (req, res) => {
   res.send("Hello!");
 });
@@ -19,7 +23,7 @@ app.get("/hello", (req, res) => {
   res.send("<html><body>Hello <b>World</b></body></html>\n");
 });
 
-
+// Listen on Port
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
 });
