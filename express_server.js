@@ -17,7 +17,9 @@ app.get("/urls", (req, res) => {
   res.render("urls_index", templateVars);
 });
 
-
+app.get("/urls/new", (req, res) => {
+  res.render("urls_new");
+});
 
 app.get("/urls/:id", (req, res) => {
   const paramsId = req.params.id;
@@ -25,6 +27,15 @@ app.get("/urls/:id", (req, res) => {
   res.render("urls_show", templateVars);
 });
 
+
+
+app.post("/urls", (req, res) => {
+  console.log(req.body); // Log the POST request body to the console
+  res.send("Ok"); // Respond with 'Ok' (we will replace this)
+});
+
+
+app.use(express.urlencoded({ extended: true }));
 
 
 // Paths
