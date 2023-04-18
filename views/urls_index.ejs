@@ -40,6 +40,12 @@
                   <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
               </td>
+              
+              <td>
+                <form method="GET" action="/urls/<%= id %>">
+                  <button type="submit" class="btn btn-danger">edit</button>
+                </form>
+              </td>
             </tr>
           <% } %>
         </tbody>
