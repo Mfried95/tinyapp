@@ -72,10 +72,6 @@ app.post("/urls/:id", (req, res) => {
   const id = req.params.id;
   const longURL = req.body.longURL;
   urlDatabase[id] = longURL;
-  const templateVars = {
-    id,
-    longURL,
-  };
   res.redirect("/urls");
 });
 
