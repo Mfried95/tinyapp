@@ -103,9 +103,8 @@ app.post("/logout", (req, res) => {
 });
 
 
-// REGISTER USER
+//////  REGISTER USER //////
 
-// get register
 app.get('/register', (req, res) => {
   let templateVars = { user_id: req.cookies["user_id"] };
   res.cookie('user_id', req.body);
@@ -139,12 +138,19 @@ app.post('/register', (req, res) => {
   } else {
     res.status(400).send('Must enter in credentials');
   }
-  
 
   console.log(users);
   res.redirect("/urls");
 });
 
+
+//////  LOGIN  //////
+
+app.get('/login', (req, res) => {
+  let templateVars = { user_id: req.cookies["user_id"] };
+  res.cookie('user_id', req.body);
+  res.render('urls_login', templateVars);
+});
 
 
 app.listen(PORT, () => {
