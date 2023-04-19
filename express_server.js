@@ -18,8 +18,13 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com",
 };
 
+const users = {
+  
+};
+
+
 // generate  ID for short URL
-const generateRandomString = function () {
+const generateRandomString = function() {
   let randomString = "";
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -31,25 +36,24 @@ const generateRandomString = function () {
 };
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Hello!");
-});
 
 app.get("/urls.json", (req, res) => {
-  res.json(urlDatabase);
+  res.json(users);
 });
 
 
 app.get("/urls", (req, res) => {
+  console.log(req.cookies);
   const templateVars = {
-    username: req.cookies["username"],
+    user_id: req.cookies["user_id"],
     urls: urlDatabase,
   };
+  console.log(req.cookies["user_id"]);
   res.render("urls_index", templateVars);
 });
 
 app.get("/urls/new", (req, res) => {
-  let templateVars = { username: req.cookies["username"] };
+  let templateVars = { user_id: req.cookies["user_id"] };
   res.render("urls_new", templateVars);
 });
 
@@ -71,7 +75,7 @@ app.get("/u/:id", (req, res) => {
 
 app.get("/urls/:id", (req, res) => {
   const templateVars = {
-    username: req.cookies["username"],
+    user: req.cookies["user_id"],
     id: req.params.id,
     longURL: urlDatabase[req.params.id],
   };
@@ -85,17 +89,62 @@ app.post("/urls/:id", (req, res) => {
   res.redirect("/urls");
 });
 
-//Login user
+// Login user
 
 app.post("/login", (req,res) => {
-  res.cookie('username', req.body.username);
+  res.cookie('user_id', req.body.username);
+  console.log(req.body);
   res.redirect("/urls");
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie('username');
+  res.clearCookie('user_id');
   res.redirect("/urls");
 });
+
+
+// REGISTER USER
+
+// get register
+app.get('/register', (req, res) => {
+  let templateVars = { user_id: req.cookies["user_id"] };
+  res.cookie('user_id', req.body);
+  res.render('urls_register', templateVars);
+});
+
+
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  const userId = Math.random().toString(36).substring(2, 8);
+
+  for (let userId in users) {
+    if (users[userId].email === email) {
+      // user exist
+      res.status(400).send('User already exist');
+      return;
+    }
+  }
+
+  // Creates a new user based on form input from this page /register
+  users[userId] = {
+    id: userId,
+    email,
+    password,
+  };
+
+  if (email && password) {
+    // set cookies
+    res.cookie('user_id', email);
+    res.redirect("/urls");
+  } else {
+    res.status(400).send('Must enter in credentials');
+  }
+  
+
+  console.log(users);
+  res.redirect("/urls");
+});
+
 
 
 app.listen(PORT, () => {

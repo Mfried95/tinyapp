@@ -12,9 +12,7 @@
   </head>
 
   <body>
-    <header>
-      <%- include('partials/_header') %>
-    </header>
+    <header><%- include('partials/_header') %></header>
     <div class="card text-center">
       <div class="card-header"></div>
       <div class="card-body">
@@ -25,7 +23,7 @@
       </div>
 
       <form method="POST" action="/urls/<%= id %>">
-        <input type="text" name="longURL">
+        <input type="text" name="longURL" />
         <button type="submit" class="btn btn-danger">Edit</button>
       </form>
 

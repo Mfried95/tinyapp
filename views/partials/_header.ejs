@@ -20,16 +20,16 @@
       </div>
     </div>
 
-    <% if (username) { %>
+    <% if (user_id) { %>
       <form action="/logout" method="POST">
-        <p>Logged in as <%= username %> </p>
+        <p>Logged in as <%= user_id %> </p>
         <button type="submit" > Logout</button>
       </form>
 
       <% } else { %>
       <form action="/login" method="POST">
         <input class="form-control" type="text" name="username" placeholder="Username">
-        <button type="submit"> Sign in</button>
+        <button type="submit"> login</button>
       </form>
       <% } %>
   </nav>
