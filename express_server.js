@@ -12,12 +12,20 @@ app.set("view engine", "ejs");
 // encode body
 app.use(express.urlencoded({ extended: true }));
 
+// Password encrypt (bcrypt)
+const bcrypt = require("bcryptjs");
+const password = "purple-monkey-dinosaur"; // found in the req.body object
+const hashedPassword = bcrypt.hashSync(password, 10);
+
+
+
 const urlDatabase = {
   b2xVn2: "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com",
 };
 
 const users = {};
+
 
 const getUserByEmail = (email, users) => {
   // Check if user exists? => look for that email
@@ -28,6 +36,7 @@ const getUserByEmail = (email, users) => {
   }
   return false;
 };
+
 
 // generate  ID for short URL
 const generateRandomString = function () {
@@ -161,7 +170,7 @@ app.post("/login", (req, res) => {
   // validation if the user exists
   const user = getUserByEmail(email, users);
   // check the passwords
-  if (user && user.password === password) {
+  if (user && bcrypt.compareSync(password, user.password)) {
     // set the cookie
     res.cookie("user_id", user.id);
     res.redirect("/urls");
@@ -186,6 +195,7 @@ app.get("/register", (req, res) => {
 app.post("/register", (req, res) => {
   const { email, password } = req.body;
   const userId = Math.random().toString(36).substring(2, 8);
+  const hashedPassword = bcrypt.hashSync(password, 10);
 
   for (let userId in users) {
     if (users[userId].email === email) {
@@ -199,7 +209,7 @@ app.post("/register", (req, res) => {
   users[userId] = {
     id: userId,
     email,
-    password,
+    password: hashedPassword
   };
 
   if (email && password) {
@@ -209,7 +219,7 @@ app.post("/register", (req, res) => {
   } else {
     res.status(400).send("Must enter in credentials");
   }
-
+  console.log(users);
   res.redirect("/urls");
 });
 
@@ -230,7 +240,7 @@ app.post("/login", (req, res) => {
   // validation if the user exists
   const user = getUserByEmail(email, users);
   // check the passwords
-  if (user && user.password === password) {
+  if (bcrypt.compareSync(password, user.password)) {
     // set the cookie
     res.cookie("user_id", user.id);
     res.redirect("/urls");
