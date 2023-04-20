@@ -17,12 +17,7 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com",
 };
 
-const users = {
-  b2xVn2: {
-    email: "m.friedman1995@gmail.com",
-    password: "123",
-  },
-};
+const users = {};
 
 const getUserByEmail = (email, users) => {
   // Check if user exists? => look for that email
@@ -47,26 +42,30 @@ const generateRandomString = function () {
 };
 
 // Routes
-
 app.get("/urls.json", (req, res) => {
   res.json(users);
 });
 
 app.get("/urls", (req, res) => {
-  console.log(req.cookies);
   const templateVars = {
-    user_id: req.cookies["user_id"],
+    user: users[req.cookies["user_id"]],
     urls: urlDatabase,
   };
+  console.log(users);
   res.render("urls_index", templateVars);
 });
 
 app.get("/urls/new", (req, res) => {
-  let templateVars = { user_id: req.cookies["user_id"] };
-  if (templateVars.user_id) {
-    res.render("urls_new", templateVars);
+  const userID = req.cookies["user_id"];
+  console.log(userID);
+  if (!userID) {
+    res.redirect("/login");
   } else {
-    res.render("urls_login", templateVars);
+    let templateVars = {
+      user: users[userID],
+      urls: urlDatabase,
+    };
+    res.render("urls_new", templateVars);
   }
 });
 
@@ -122,14 +121,13 @@ app.post("/login", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res.clearCookie("user_id");
-  res.redirect("/urls");
+  res.redirect("/login");
 });
 
 //////  REGISTER USER //////
 
 app.get("/register", (req, res) => {
-  let templateVars = { user_id: req.cookies["user_id"] };
-  res.cookie("user_id", req.body);
+  let templateVars = { user: users[req.cookies["user_id"]] };
   res.render("urls_register", templateVars);
 });
 
@@ -160,15 +158,13 @@ app.post("/register", (req, res) => {
     res.status(400).send("Must enter in credentials");
   }
 
-  console.log(users);
   res.redirect("/urls");
 });
 
 //////  LOGIN  //////
 
 app.get("/login", (req, res) => {
-  let templateVars = { user_id: req.cookies["user_id"] };
-  res.cookie("user_id", req.body);
+  let templateVars = { user: users[req.cookies["user_id"]] };
   if (templateVars.user) {
     res.redirect("/urls");
   } else {
@@ -177,7 +173,7 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  let templateVars = { user_id: req.cookies["user_id"] };
+  let templateVars = { user: users[req.cookies["user_id"]] };
   // extract the email and password
   const { email, password } = req.body;
   // validation if the user exists

@@ -1,3 +1,4 @@
+
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <a class="navbar-brand" href="/urls">TinyApp</a>
@@ -19,19 +20,19 @@
       </div>
     </div>
 
-    <% if (user_id) { %>
-    <form action="/logout" method="POST">
-      <p>Logged in as <%= user_id %></p>
-      <button type="submit">Logout</button>
-    </form>
+    <% if (user) { %>
+      <form action="/logout" method="POST">
+        <p>Logged in as <%= user.email %> </p>
+        <button type="submit" > Logout</button>
+      </form>
 
-    <% } else { %>
-    <form class="form-inline" action="/login" method="GET">
-      <button type="submit">Login</button>
-    </form>
-    <form class="form-inline" action="/register" method="GET">
-      <button type="submit">Register</button>
-    </form>
-    <% } %>
+      <% } else { %>
+        <form class="form-inline" action="/login" method="GET">
+          <button type="submit">Login</button>
+        </form>
+        <form class="form-inline" action="/register" method="GET">
+          <button type="submit">Register</button>
+        </form>
+        <% } %>
   </nav>
 </header>
