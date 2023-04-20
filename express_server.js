@@ -1,6 +1,22 @@
 const express = require("express");
 const app = express();
 const PORT = 8080;
+const bcrypt = require("bcryptjs");
+const password = "purple-monkey-dinosaur"; // found in the req.body object
+const hashedPassword = bcrypt.hashSync(password, 10);
+// Imported from helpers.js
+const { getUserByEmail, generateRandomString } = require('./helpers');
+
+
+const urlDatabase = {
+  b2xVn2: "http://www.lighthouselabs.ca",
+  "9sm5xK": "http://www.google.com",
+};
+
+const users = {
+  
+};
+
 
 // Cookie session
 const cookieSession = require('cookie-session');
@@ -14,48 +30,9 @@ app.use(
 // view engine
 app.set("view engine", "ejs");
 
-// encode body
+// Encode Body
 app.use(express.urlencoded({ extended: true }));
 
-
-
-// Password encrypt (bcrypt)
-const bcrypt = require("bcryptjs");
-const password = "purple-monkey-dinosaur"; // found in the req.body object
-const hashedPassword = bcrypt.hashSync(password, 10);
-
-
-
-const urlDatabase = {
-  b2xVn2: "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com",
-};
-
-const users = {};
-
-
-const getUserByEmail = (email, users) => {
-  // Check if user exists? => look for that email
-  for (let userId in users) {
-    if (users[userId].email === email) {
-      return users[userId];
-    }
-  }
-  return false;
-};
-
-
-// generate  ID for short URL
-const generateRandomString = function () {
-  let randomString = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 0; i <= 6; i++) {
-    let charIndex = Math.floor(Math.random() * characters.length);
-    randomString += characters[charIndex];
-  }
-  return randomString;
-};
 
 // Routes
 
@@ -260,3 +237,6 @@ app.post("/login", (req, res) => {
 app.listen(PORT, () => {
   console.log(` listening on port ${PORT}!`);
 });
+
+
+module.export = { users };
