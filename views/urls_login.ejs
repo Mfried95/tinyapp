@@ -23,16 +23,16 @@
   <header>
     <header><%- include('partials/_header') %></header>
   </header>
-  <body>
-    <main>
-      <h3>Login</h3>
+  <body >
+    <main style="width: 200px; margin: auto;">
       <form action="/login" method="POST">
-        <div>
+        <h3>Login</h3>
+        <div style="width: 200px;">
           <label for="email" style="margin-top: 1.5em">Email  address</label>
-          <input  type="email" name="email" placeholder="user@example.com">
+          <input  type="email" name="email" placeholder="user@example.com" style="width: 100%;">
           <label for="password" >Password</label>
-          <input type="password" name="password" placeholder="password">
-          <button type="submit">Login</button>
+          <input type="password" name="password" placeholder="password" style="width: 100%;">
+          <button type="submit" style="width: 100%; margin-top: 1em; cursor: pointer;">Login</button>
         </div>
       </form>
     </main>

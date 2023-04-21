@@ -21,15 +21,15 @@
     <header>
       <header><%- include('partials/_header') %></header>
     </header>
-    <main >
+    <main style="width: 200px; margin: auto;" >
       <h3>Create account</h3>
-      <form  action="/register" method="POST">
+      <form  action="/register" method="POST" style="margin-top: 1em;">
         <div>
           <label for="email" >Email address</label>
-          <input  type="email" name="email" placeholder="user@example.com">
+          <input  type="email" name="email" placeholder="user@example.com" style="width: 100%;">
           <label for="password" >Password</label>
-          <input  type="password" name="password" placeholder="password" >
-          <button type="submit" >Register</button>
+          <input  type="password" name="password" placeholder="password" style="width: 100%;" >
+          <button type="submit" style="width: 100%; margin-top: 1em; cursor: pointer;" >Register</button>
         </div>
       </form>
     </main>

@@ -5,8 +5,7 @@ const PORT = 8080;
 const bcrypt = require("bcryptjs");
 
 // Import data objects
-const { users, urlDatabase } = require('./data');
-
+const { users, urlDatabase } = require("./data");
 
 // Import helper functions from external file
 const { getUserByEmail, generateRandomString, setLongUrl } =
@@ -32,6 +31,15 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/urls.json", (req, res) => {
   // Return JSON object containing user data
   res.json(users);
+});
+
+// Homepage
+app.get("/", (req, res) => {
+  if (req.session.user_id) {
+    res.redirect("/urls");
+  } else {
+    res.redirect("/login");
+  }
 });
 
 app.get("/urls", (req, res) => {
@@ -119,11 +127,18 @@ app.get("/urls/:id", (req, res) => {
 });
 
 app.post("/urls/:id", (req, res) => {
-  // Update an existing URL
+  // Check if the user is logged in
+  if (!req.session.user_id) {
+    res.status(401).send("Unauthorized");
+    return;
+  }
   const id = req.params.id;
   const longURL = req.body.longURL;
-  urlDatabase[id] = longURL;
-  // Redirect to the urls page
+  if (!urlDatabase[id] || urlDatabase[id].userID !== req.session.user_id) {
+    res.status(403).send("Forbidden");
+    return;
+  }
+  urlDatabase[id].longURL = longURL;
   res.redirect("/urls");
 });
 
