@@ -4,7 +4,8 @@ TinyApp is a full stack web application built with Node and Express that allows 
 
 ## Final Product
 
-!["urls page"](https://github.com/Mfried95/tinyapp/blob/main/docs/localhost_8080_urls.png)
+
+!["URLS"](#https://ibb.co/4PgP4yj)
 
 ## Dependencies
 
@@ -21,3 +22,4 @@ TinyApp is a full stack web application built with Node and Express that allows 
 - You can test files by using `npm test`
 
 - First you need to register then you're good to go :)
+
