@@ -4,12 +4,9 @@ const app = express();
 const PORT = 8080;
 const bcrypt = require("bcryptjs");
 
-// Define user data and URL database
-const users = {};
-const urlDatabase = {
-  b2xVn2: "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com",
-};
+// Import data objects
+const { users, urlDatabase } = require('./data');
+
 
 // Import helper functions from external file
 const { getUserByEmail, generateRandomString, setLongUrl } =
@@ -17,6 +14,7 @@ const { getUserByEmail, generateRandomString, setLongUrl } =
 
 // Configure cookie session
 const cookieSession = require("cookie-session");
+
 app.use(
   cookieSession({
     name: "session",
@@ -39,8 +37,8 @@ app.get("/urls.json", (req, res) => {
 app.get("/urls", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
-    // Redirect to login page if user is not logged in
-    res.redirect("/login");
+    // Message when user is not logged in
+    res.status(401).send("Login required");
   } else {
     // Filter urlDatabase to only show URLs created by the current user
     const userUrls = {};
@@ -63,7 +61,7 @@ app.get("/urls/new", (req, res) => {
   const userID = req.session["user_id"];
   if (!userID) {
     // Redirect to login page if user is not logged in
-    res.redirect("/login");
+    res.status(401).send("Login");
   } else {
     // Render new URL form with user data
     let templateVars = {
@@ -101,17 +99,18 @@ app.post("/urls/:id/delete", (req, res) => {
 app.get("/u/:id", (req, res) => {
   const longURL = urlDatabase[req.params.id];
   res.redirect(longURL);
+  console.log(longURL);
 });
 
 app.get("/urls/:id", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
     // If user is not logged in, redirect to login page
-    res.redirect("/login");
+    res.status(401).send("Login required");
   } else {
     // If user is logged in, render the urls_show template with the provided URL data
     const templateVars = {
-      user: req.session["user_id"],
+      user: users[req.session["user_id"]],
       id: req.params.id,
       longURL: urlDatabase[req.params.id],
     };
@@ -148,7 +147,7 @@ app.post("/login", (req, res) => {
 
 app.post("/logout", (req, res) => {
   // Clear the user_id cookie and redirect to the login page
-  req.session.user_id = null;
+  req.session = null;
   res.redirect("/login");
 });
 
