@@ -99,6 +99,22 @@ app.post("/urls", (req, res) => {
 
 // Delete a short URL
 app.post("/urls/:id/delete", (req, res) => {
+  if (!req.session.user_id) {
+    // If not logged in, redirect to login page or show an error message
+    res.status(401).send("You need to log in to delete a URL");
+    return;
+  }
+  const url = urlDatabase[req.params.id];
+  if (!url) {
+    res.status(404).send("URL not found");
+    return;
+  }
+
+  if (url.userID !== req.session.user_id) {
+    res.status(403).send("You are not authorized to delete this URL");
+    return;
+  }
+
   delete urlDatabase[req.params.id];
   res.redirect("/urls/");
 });
