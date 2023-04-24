@@ -28,6 +28,10 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // Define routes
+app.get("/urls.json", (req, res) => {
+  // Return JSON object containing user data
+  res.json(users);
+});
 
 // Homepage
 app.get("/", (req, res) => {
@@ -124,15 +128,20 @@ app.get("/u/:id", (req, res) => {
 
 app.get("/urls/:id", (req, res) => {
   const userID = req.session.user_id;
+  const id = req.params.id;
+
   if (!userID) {
     // If user is not logged in, redirect to login page
     res.status(401).send("Login required");
+  } else if (!urlDatabase[id]) {
+    // If the ID does not exist in the database, send an error message
+    res.status(404).send("URL not found");
   } else {
-    // If user is logged in, render the urls_show template with the provided URL data
+    // If user is logged in and the ID exists, render the urls_show template with the provided URL data
     const templateVars = {
       user: users[req.session["user_id"]],
-      id: req.params.id,
-      longURL: urlDatabase[req.params.id],
+      id: id,
+      longURL: urlDatabase[id],
     };
     res.render("urls_show", templateVars);
   }
