@@ -28,10 +28,6 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // Define routes
-app.get("/urls.json", (req, res) => {
-  // Return JSON object containing user data
-  res.json(users);
-});
 
 // Homepage
 app.get("/", (req, res) => {
