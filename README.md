@@ -5,6 +5,7 @@ TinyApp is a web application developed using Node.js and Express that allows use
 ## Final Product
 
 !["URLS"](docs/ss1.png)
+
 ## Dependencies
 
 - Node.js
@@ -32,3 +33,4 @@ TinyApp is a web application developed using Node.js and Express that allows use
 Michael Friedman
 [Portfolio](https://mfriedman.dev/)
 [Linkden](https://www.linkedin.com/in/michael-friedman-800407242/)
+[Email](michael@mfriedman.dev)
