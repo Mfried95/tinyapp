@@ -1,0 +1,10 @@
+nav{
+  background-color: grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-buttons{
+  display: flex;
+  gap: 1em;
+}

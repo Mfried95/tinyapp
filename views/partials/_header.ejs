@@ -1,37 +1,38 @@
-
-<header>
-  <nav >
-    <a class="navbar-brand" href="/urls">TinyApp</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/urls">My URLs</a>
-        <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet"  href="/css/styles.css">
+    <title>TinyApp</title>
+    <link rel="stylesheet" href="/public/stylesheet/style.css">
+  </head>
+  
+  <header>
+    
+    <nav>
+      <div>
+        <span>
+          <a href="/urls">TinyApp</a>
+        </span>
+        <a href="/urls">My URLs</a>
+        <a href="/urls/new">Create New URL</a>
       </div>
-    </div>
-
-    <% if (user) { %>
-      <form action="/logout" method="POST">
-        <p>Logged in as <%= user.email %> </p>
-        <button type="submit" > Logout</button>
-      </form>
-
-      <% } else { %>
-        <form class="form-inline" action="/login" method="GET">
-          <button type="submit">Login</button>
-        </form>
-        <form class="form-inline" action="/register" method="GET">
-          <button type="submit">Register</button>
-        </form>
-        <% } %>
-  </nav>
-</header>
+      <div class="nav-buttons">
+        <% if (user) { %>
+          <form action="/logout" method="POST">
+            <p>Logged in as <%= user.email %> </p>
+            <button type="submit">Logout</button>
+          </form>
+          <% } else { %>
+          <form action="/login" method="GET">
+            <button type="submit">Login</button>
+          </form>
+          <form action="/register" method="GET">
+            <button type="submit">Register</button>
+          </form>
+          <% } %>
+      </div>
+    </nav>
+  </header>
+</html>

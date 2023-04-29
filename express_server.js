@@ -4,6 +4,8 @@ const app = express();
 const PORT = 8080;
 const bcrypt = require("bcryptjs");
 
+app.use(express.static("public"));
+
 // Import data objects
 const { users, urlDatabase } = require("./data");
 
