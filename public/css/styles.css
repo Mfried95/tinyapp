@@ -1,10 +1,86 @@
-nav{
-  background-color: grey;
-  display: flex;
-  justify-content: space-between;
+
+/* Imported form google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,700;1,800&display=swap');
+
+/* Set global font family */
+body {
+  font-family: 'Poppins', sans-serif;
 }
 
-.nav-buttons{
+/* Navigation bar styling */
+nav {
+  background-color: rgb(50, 101, 177);
+  opacity: 0.8;
+  border-radius: 3em;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 0 3em;
+  box-shadow: 5px 5px 14px 8px rgba(0, 0, 0, 0.34);
+}
+
+/* Navigation bar logo link styling */
+.logo-link {
+  font-size: 20px;
+  font-style: italic;
+  padding-right: 3em;
+}
+
+/* Navigation bar link styling */
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+/* Navigation bar link hover state */
+nav a:hover {
+  color: black;
+}
+
+/* Navigation bar logo link hover state */
+.logo-link a:hover {
+  color: inherit;
+}
+
+/* Navigation bar button styling */
+button {
+  cursor: pointer;
+}
+
+/* Page links styling */
+.page-links a {
+  margin: 0.5em;
+}
+
+/* Navigation bar buttons container styling */
+.nav-buttons {
   display: flex;
   gap: 1em;
+}
+
+nav button{
+  font-size:15px;
+  padding: 0.5em 1em;
+  border-width:1px;
+  color: black;
+  font-weight:bold;
+  border: none;
+  border-top-left-radius:27px;
+  border-top-right-radius:27px;
+  border-bottom-left-radius:27px;
+  border-bottom-right-radius:27px;
+  background: white;
+}
+
+/* Navigation bar button hover state */
+nav button:hover {
+  background: rgb(166, 199, 222);
+}
+
+.logged-in-state p{
+ margin: 0;
+ padding: 10px;
 }

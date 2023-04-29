@@ -11,16 +11,18 @@
   <header>
     
     <nav>
-      <div>
-        <span>
+      <div class="link-container">
+        <span class="logo-link">
           <a href="/urls">TinyApp</a>
         </span>
-        <a href="/urls">My URLs</a>
-        <a href="/urls/new">Create New URL</a>
+          <span class="page-links">
+            <a href="/urls">My URLs</a>
+            <a href="/urls/new">Create New URL</a>
+          </span>
       </div>
       <div class="nav-buttons">
         <% if (user) { %>
-          <form action="/logout" method="POST">
+          <form action="/logout" method="POST" class="logged-in-state">
             <p>Logged in as <%= user.email %> </p>
             <button type="submit">Logout</button>
           </form>
