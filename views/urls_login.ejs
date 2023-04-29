@@ -18,16 +18,14 @@
     <header><%- include('partials/_header') %></header>
   </header>
   <body >
-    <main >
+    <main class="login-form">
       <form action="/login" method="POST" >
         <h3 >Login</h3>
-        <div >
-          <label for="email" >Email  address</label>
-          <input  type="email" name="email" placeholder="user@example.com">
-          <label for="password" >Password</label>
-          <input type="password" name="password" placeholder="password" >
-          <button type="submit" >Login</button>
-        </div>
+          <label for="email" >Email  address:</label>
+          <input  type="email" name="email" placeholder="user@example.com" class="css-input">
+          <label for="password" >Password:</label>
+          <input type="password" name="password" placeholder="password" class="css-input" >
+          <button type="submit" class="login-btn" >Login</button>
       </form>
     </main>
   </body>

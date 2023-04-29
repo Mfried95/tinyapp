@@ -23,7 +23,7 @@
       <div class="nav-buttons">
         <% if (user) { %>
           <form action="/logout" method="POST" class="logged-in-state">
-            <p>Logged in as <%= user.email %> </p>
+            <p> <%= user.email %> </p>
             <button type="submit">Logout</button>
           </form>
           <% } else { %>
@@ -31,7 +31,7 @@
             <button type="submit">Login</button>
           </form>
           <form action="/register" method="GET">
-            <button type="submit">Register</button>
+            <button type="submit">Sign up</button>
           </form>
           <% } %>
       </div>
