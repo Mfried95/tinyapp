@@ -7,13 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
+  
     <title>TinyApp</title>
   </head>
   <body>
@@ -21,7 +15,7 @@
       <%- include('partials/_header') %>
       
     </header>
-    <main style="margin: auto; padding: 20px;">
+    <main>
       <h3>My URLs</h3>
       <table class="table">
         <thead>
@@ -37,13 +31,13 @@
               <td><%= urls[id] %></td>
               <td>
                 <form method="POST" action="/urls/<%= id %>/delete">
-                  <button type="submit" class="btn btn-danger">Delete</button>
+                  <button type="submit">Delete</button>
                 </form>
               </td>
               
               <td>
                 <form method="GET" action="/urls/<%= id %>">
-                  <button type="submit" class="btn btn-danger">Edit</button>
+                  <button type="submit">Edit</button>
                 </form>
               </td>
             </tr>

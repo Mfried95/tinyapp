@@ -3,13 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <!-- Bootstrap CSS -->
-     <link
-     rel="stylesheet"
-     href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-     crossorigin="anonymous"
-   />
+    
    <link
      href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
      rel="stylesheet"
@@ -21,15 +15,15 @@
     <header>
       <header><%- include('partials/_header') %></header>
     </header>
-    <main style="width: 200px; margin: auto;" >
+    <main>
       <h3>Create account</h3>
       <form  action="/register" method="POST" style="margin-top: 1em;">
         <div>
           <label for="email" >Email address</label>
-          <input  type="email" name="email" placeholder="user@example.com" style="width: 100%;">
+          <input  type="email" name="email" placeholder="user@example.com" >
           <label for="password" >Password</label>
-          <input  type="password" name="password" placeholder="password" style="width: 100%;" >
-          <button type="submit" style="width: 100%; margin-top: 1em; cursor: pointer;" >Register</button>
+          <input  type="password" name="password" placeholder="password"  >
+          <button type="submit">Register</button>
         </div>
       </form>
     </main>
