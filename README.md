@@ -4,7 +4,9 @@ TinyApp is a web application developed using Node.js and Express that allows use
 
 ## Final Product
 
-!["URLS"](docs/ss1.png)
+!["URLS"](docs/tinyapp-login.png)
+!["URLS"](docs/tinyapp-create.png)
+!["URLS"](docs/tinyapp-links.png)
 
 ## Dependencies
 

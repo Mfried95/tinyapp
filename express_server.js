@@ -118,7 +118,7 @@ app.post("/urls/:id/delete", (req, res) => {
   }
 
   delete urlDatabase[req.params.id];
-  res.redirect("/urls/");
+  res.redirect("/urls");
 });
 
 // Redirect to long URL associated with a short URL

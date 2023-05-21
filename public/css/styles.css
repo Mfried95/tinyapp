@@ -185,3 +185,49 @@ td a:hover{
   box-shadow: 0 0 20px rgb(166, 199, 222);
   background-color: rgb(166, 199, 222);
 }
+
+
+.create-url {
+  text-align: center;
+  padding: 20px;
+  box-shadow: 5px 5px 15px -7px #000000;
+}
+
+.create-url h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.create-url form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-url .form-group {
+  margin-bottom: 10px;
+}
+
+.create-url label {
+  display: block;
+  font-size: 20px;
+}
+
+.create-url input[type="text"] {
+  width: 300px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.create-url button[type="submit"] {
+  padding: 8px 20px;
+  font-size: 16px;
+  background-color: rgb(70, 98, 118);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.create-url button[type="submit"]:hover {
+  background-color: rgb(166, 199, 222);
+}
