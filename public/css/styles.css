@@ -141,3 +141,47 @@ input:focus {
   box-shadow: 0 0 20px rgb(166, 199, 222);
   background-color: rgb(166, 199, 222);
 }
+
+h3{
+  margin: 2em;
+}
+
+table {
+ margin: 2em;
+}
+
+tbody{
+  background-color: #CCCCCC;
+  height: 50px;
+}
+
+.url-table{
+  font-size: 20px;
+}
+
+td{
+  padding: 1em;
+}
+
+td a {
+  color: black;
+}
+
+td a:hover{
+  color: rgb(70, 98, 118);
+  text-decoration: underline;
+}
+
+.urls-sub, .urls-edit{
+  background-color: white;
+  border-radius: 1rem;
+  border: none;
+  padding: 1em;
+}
+
+.urls-sub:hover, .urls-edit:hover {
+  color: black;
+  border: 0;
+  box-shadow: 0 0 20px rgb(166, 199, 222);
+  background-color: rgb(166, 199, 222);
+}
