@@ -15,16 +15,14 @@
     <header>
       <header><%- include('partials/_header') %></header>
     </header>
-    <main>
-      <h3>Create account</h3>
-      <form  action="/register" method="POST" style="margin-top: 1em;">
-        <div>
-          <label for="email" >Email address</label>
-          <input  type="email" name="email" placeholder="user@example.com" >
-          <label for="password" >Password</label>
-          <input  type="password" name="password" placeholder="password"  >
-          <button type="submit">Register</button>
-        </div>
+    <main class="login-form">
+      <form action="/register" method="POST" >
+        <h3>Signup</h3>
+          <label for="email" >Email  address:</label>
+          <input  type="email" name="email" placeholder="user@example.com" class="css-input">
+          <label for="password" >Password:</label>
+          <input type="password" name="password" placeholder="password" class="css-input" >
+          <button type="submit" class="login-btn" >Login</button>
       </form>
     </main>
   </body>

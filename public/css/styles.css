@@ -82,7 +82,7 @@ nav button:hover {
   padding: 10px;
 }
 
-.login-form {
+.login-form, .reg-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -128,7 +128,7 @@ input:focus {
 
 .login-btn {
   width: 100%;
-  height: 30px;
+  height: 40px;
   padding: 0.5em;
   margin-top: 1em;
   border: solid rgb(50, 101, 177) 1px;
