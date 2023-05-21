@@ -7,13 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet"  href="/css/styles.css">
     <link
       href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
       rel="stylesheet"
@@ -24,16 +18,14 @@
     <header><%- include('partials/_header') %></header>
   </header>
   <body >
-    <main style="width: 200px; margin: 2em auto; ">
-      <form action="/login" method="POST" style="font-size: 25px;">
-        <h3 style="font-size: 30px;">Login</h3>
-        <div style="width: 200px;">
-          <label for="email" style="margin-top: 1.5em;">Email  address</label>
-          <input  type="email" name="email" placeholder="user@example.com" style="width: 300px;">
-          <label for="password" >Password</label>
-          <input type="password" name="password" placeholder="password" style="width: 300px;">
-          <button type="submit" style="width: 100%; margin-top: 1em; cursor: pointer; border: solid black 1px; background-color: white;">Login</button>
-        </div>
+    <main class="login-form">
+      <form action="/login" method="POST" >
+        <h3 >Login</h3>
+          <label for="email" >Email  address:</label>
+          <input  type="email" name="email" placeholder="user@example.com" class="css-input">
+          <label for="password" >Password:</label>
+          <input type="password" name="password" placeholder="password" class="css-input" >
+          <button type="submit" class="login-btn" >Login</button>
       </form>
     </main>
   </body>

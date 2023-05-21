@@ -1,0 +1,233 @@
+/* Imported form google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,700;1,800&display=swap');
+
+/* Set global font family */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navigation bar styling */
+nav {
+  background-color: rgb(50, 101, 177);
+  opacity: 0.8;
+  border-radius: 3em;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  font-size: 18px;
+  padding: 0 3em;
+  box-shadow: 5px 5px 14px 8px rgba(0, 0, 0, 0.34);
+}
+
+/* Navigation bar logo link styling */
+.logo-link {
+  font-size: 20px;
+  font-style: italic;
+  padding-right: 3em;
+}
+
+/* Navigation bar link styling */
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+/* Navigation bar link hover state */
+nav a:hover {
+  color: black;
+}
+
+/* Navigation bar logo link hover state */
+.logo-link a:hover {
+  color: inherit;
+}
+
+/* Navigation bar button styling */
+button {
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+/* Page links styling */
+.page-links a {
+  margin: 0.5em;
+}
+
+/* Navigation bar buttons container styling */
+.nav-buttons {
+  display: flex;
+  gap: 1em;
+}
+
+nav button {
+  font-size: 15px;
+  padding: 0.5em 1em;
+  color: black;
+  font-weight: bold;
+  border: 0;
+  border-radius: 3rem;
+  background: white;
+}
+
+/* Navigation bar button hover state */
+nav button:hover {
+  background: rgb(166, 199, 222);
+}
+
+.logged-in-state p {
+  margin: 0;
+  padding: 10px;
+}
+
+.login-form, .reg-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Login form */
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  width: 300px;
+  margin: 2em auto;
+  padding: 1em;
+  box-shadow: 0px 0px 24px 9px rgba(0,0,0,0.23);
+}
+
+.login-form h3 {
+  margin: auto;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 0px;
+  box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+label {
+  padding: 10px 0;
+  font-size: 15px;
+}
+
+input:focus {
+  outline:none;
+}
+
+.login-btn {
+  width: 100%;
+  height: 40px;
+  padding: 0.5em;
+  margin-top: 1em;
+  border: solid rgb(50, 101, 177) 1px;
+  background-color: white;
+}
+
+.login-btn:hover {
+  color: black;
+  border: 0;
+  box-shadow: 0 0 20px rgb(166, 199, 222);
+  background-color: rgb(166, 199, 222);
+}
+
+h3{
+  margin: 2em;
+}
+
+table {
+ margin: 2em;
+}
+
+tbody{
+  background-color: #CCCCCC;
+  height: 50px;
+}
+
+.url-table{
+  font-size: 20px;
+}
+
+td{
+  padding: 1em;
+}
+
+td a {
+  color: black;
+}
+
+td a:hover{
+  color: rgb(70, 98, 118);
+  text-decoration: underline;
+}
+
+.urls-sub, .urls-edit{
+  background-color: white;
+  border-radius: 1rem;
+  border: none;
+  padding: 1em;
+}
+
+.urls-sub:hover, .urls-edit:hover {
+  color: black;
+  border: 0;
+  box-shadow: 0 0 20px rgb(166, 199, 222);
+  background-color: rgb(166, 199, 222);
+}
+
+
+.create-url {
+  text-align: center;
+  padding: 20px;
+  box-shadow: 5px 5px 15px -7px #000000;
+}
+
+.create-url h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.create-url form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-url .form-group {
+  margin-bottom: 10px;
+}
+
+.create-url label {
+  display: block;
+  font-size: 20px;
+}
+
+.create-url input[type="text"] {
+  width: 300px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.create-url button[type="submit"] {
+  padding: 8px 20px;
+  font-size: 16px;
+  background-color: rgb(70, 98, 118);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.create-url button[type="submit"]:hover {
+  background-color: rgb(166, 199, 222);
+}
